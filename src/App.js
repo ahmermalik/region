@@ -64,75 +64,63 @@ function App() {
     }
   };
 
+  const viewAll = () => {
+    setViewSingle(false);
+    setFilteredProducts(allProducts);
+    window.history.pushState({}, '', window.location.pathname);
+    setSearchTerm("");
+  };
+
+
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          <button> view {`something`} </button>
-          <div>      <input
-            type="text"
-            placeholder="Search products..."
-            value={searchTerm}
-            onChange={handleSearchChange}
-          /></div>
-
+          <button onClick={() => viewAll()}>view all products</button>
+  
+          <div>
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+          </div>
         </div>
-
-
+  
         <div className="main-display">
-
           {loading ? (
             <p>Loading...</p>
           ) : error ? (
             <p>Error: {error.message}</p>
           ) : (
-            <>
-              {!viewSingle ? (
-                <div>
-                  <h1>Products</h1>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {allProducts.map(product => (
-                        <tr key={product.id} onClick={() => setViewProduct(product)}>
-                          <td>{product.id}</td>
-                          <td>{product.name}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ) : <div>
-                <h1>Products</h1>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Description</th>
+            <div>
+              <h1>Products</h1>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    {viewSingle && <th>Description</th>}
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredProducts.map(product => (
+                    <tr key={product.id} onClick={() => setViewProduct(product)}>
+                      <td>{product.id}</td>
+                      <td>{product.name}</td>
+                      {viewSingle && <td>{product.description}</td>}
                     </tr>
-                  </thead>
-                  <tbody>
-                    {filteredProducts.map(product => (
-                      <tr key={product.id} onClick={() => setViewProduct(product)}>
-                        <td>{product.id}</td>
-                        <td>{product.name}</td>
-                        <td>{product.description}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table></div>}
-            </>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
       </header>
     </div>
   );
+  
 }
 
 export default App;
