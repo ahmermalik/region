@@ -62,6 +62,10 @@ function App() {
 
       setFilteredProducts(filtered);
     }
+
+    if(term.length == 0){
+      setViewSingle(false);
+    }
   };
 
   const viewAll = () => {
