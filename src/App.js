@@ -10,6 +10,7 @@ function App() {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
+    document.title = 'Region 4 - Project';
     fetch('https://tjeho5ur2rhijcjiukbzvph7je0wnqoy.lambda-url.us-east-2.on.aws/')
       .then(response => {
         if (!response.ok) {
