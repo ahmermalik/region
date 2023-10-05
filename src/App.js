@@ -42,7 +42,7 @@ function App() {
   const setViewProduct = product => {
     setFilteredProducts([product]);
     setViewSingle(true);
-    window.history.pushState({}, '', `products?id=${product.id}`);
+    window.history.pushState({}, '', `?id=${product.id}`);
   };
 
   const getQueryParamValue = name => {
