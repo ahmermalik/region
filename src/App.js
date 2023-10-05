@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const productId = getQueryParamValue('name');
+    const productId = getQueryParamValue('id');
     if (productId && allProducts) {
       const product = allProducts.find(p => p.id.toString() === productId);
       if (product) {
@@ -42,7 +42,7 @@ function App() {
   const setViewProduct = product => {
     setFilteredProducts([product]);
     setViewSingle(true);
-    window.history.pushState({}, '', `products?name=${product.id}`);
+    window.history.pushState({}, '', `products?id=${product.id}`);
   };
 
   const getQueryParamValue = name => {
