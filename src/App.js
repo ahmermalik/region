@@ -63,7 +63,7 @@ function App() {
       setFilteredProducts(filtered);
     }
 
-    if(term.length == 0){
+    if (term.length === 0) {
       setViewSingle(false);
     }
   };
@@ -74,14 +74,11 @@ function App() {
     window.history.pushState({}, '', window.location.pathname);
     setSearchTerm("");
   };
-
-
   return (
     <div className="App">
       <header className="App-header">
-        <div>
+        <div className="">
           <button onClick={() => viewAll()}>view all products</button>
-  
           <div>
             <input
               type="text"
@@ -91,7 +88,7 @@ function App() {
             />
           </div>
         </div>
-  
+        </header>
         <div className="main-display">
           {loading ? (
             <p>Loading...</p>
@@ -121,10 +118,10 @@ function App() {
             </div>
           )}
         </div>
-      </header>
+    
     </div>
   );
-  
+
 }
 
 export default App;
