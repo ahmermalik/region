@@ -97,6 +97,7 @@ function App() {
           ) : (
             <div>
               <h1>{filteredProducts.length} Available Products</h1>
+              <h1> TESTING CI/CD PIPELINE</h1>
               <table>
                 <thead>
                   <tr>
