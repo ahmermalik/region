@@ -96,7 +96,7 @@ function App() {
             <p>Error: {error.message}</p>
           ) : (
             <div>
-              <h1>Products</h1>
+              <h1>{filteredProducts.length} Available Products</h1>
               <table>
                 <thead>
                   <tr>
